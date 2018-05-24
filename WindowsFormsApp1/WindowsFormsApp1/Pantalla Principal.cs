@@ -11,7 +11,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class Form1 : MetroFramework.Forms.MetroForm
     {
         public Form1()
         {
@@ -25,6 +25,8 @@ namespace WindowsFormsApp1
             chart1.Series[0].Enabled = true;
             chart1.Series[1].Enabled = false;
             chart1.Series[2].Enabled = false;
+            colorDialog1.Color = Color.FromArgb(255);
+            chart1.ChartAreas[0].BackColor = Color.FromArgb(255);
 
         }
 
@@ -32,19 +34,27 @@ namespace WindowsFormsApp1
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            chart1.ChartAreas.Select(x => { x.Area3DStyle.Enable3D = comboBox1.SelectedIndex.Equals(1); return x; }).First();
-            //if (comboBox1.SelectedIndex == 0)
-            //{
-            //    chart1.ChartAreas[0].Area3DStyle.Enable3D = false;
-            //    chart1.ChartAreas[1].Area3DStyle.Enable3D = false;
-            //    chart1.ChartAreas[2].Area3DStyle.Enable3D = false;
-            //}
-            //else
-            //{
-            //    chart1.ChartAreas[0].Area3DStyle.Enable3D = true;
-            //    chart1.ChartAreas[1].Area3DStyle.Enable3D = true;
-            //    chart1.ChartAreas[2].Area3DStyle.Enable3D = true;
-            //}
+
+            if (comboBox1.SelectedIndex == 0)
+            {
+                chart1.ChartAreas[0].Area3DStyle.Enable3D = false;
+                if (chart1.ChartAreas.Count > 1)
+                {
+                    chart1.ChartAreas[1].Area3DStyle.Enable3D = false;
+                    chart1.ChartAreas[2].Area3DStyle.Enable3D = false;
+                }
+               
+            }
+            else
+            {
+                chart1.ChartAreas[0].Area3DStyle.Enable3D = true;
+                if (chart1.ChartAreas.Count > 1)
+                {
+                    chart1.ChartAreas[1].Area3DStyle.Enable3D = true;
+                    chart1.ChartAreas[2].Area3DStyle.Enable3D = true;
+                }
+                
+            }
 
         }
         ChartArea Area2 = new ChartArea("Area2");
@@ -161,15 +171,36 @@ namespace WindowsFormsApp1
             {
                 case "Ninguno":
                     chart1.ChartAreas[0].Area3DStyle.LightStyle = LightStyle.None;
+                    if (chart1.ChartAreas.Count > 1)
+                    {
+                        chart1.ChartAreas[1].Area3DStyle.LightStyle = LightStyle.None;
+                        chart1.ChartAreas[2].Area3DStyle.LightStyle = LightStyle.None;
+                        
+                    }
                     break;
                 case "Simplista":
                     chart1.ChartAreas[0].Area3DStyle.LightStyle = LightStyle.Simplistic;
+                    if (chart1.ChartAreas.Count > 1)
+                    {
+                        chart1.ChartAreas[1].Area3DStyle.LightStyle = LightStyle.Simplistic;
+                        chart1.ChartAreas[2].Area3DStyle.LightStyle = LightStyle.Simplistic;
+                    }
                     break;
                 case "Realista":
                     chart1.ChartAreas[0].Area3DStyle.LightStyle = LightStyle.Realistic;
+                    if (chart1.ChartAreas.Count > 1)
+                    {
+                        chart1.ChartAreas[1].Area3DStyle.LightStyle = LightStyle.Realistic;
+                        chart1.ChartAreas[2].Area3DStyle.LightStyle = LightStyle.Realistic;
+                    }
                     break;
                 default:
                     chart1.ChartAreas[0].Area3DStyle.LightStyle = LightStyle.Simplistic;
+                    if (chart1.ChartAreas.Count > 1)
+                    {
+                        chart1.ChartAreas[1].Area3DStyle.LightStyle = LightStyle.Simplistic;
+                        chart1.ChartAreas[2].Area3DStyle.LightStyle = LightStyle.Simplistic;
+                    }
                     break;
             }
         }
@@ -179,6 +210,13 @@ namespace WindowsFormsApp1
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 chart1.ChartAreas[0].BackColor = colorDialog1.Color;
+
+                if (chart1.ChartAreas.Count > 1)
+                {
+                    chart1.ChartAreas[1].BackColor = colorDialog1.Color;
+                    chart1.ChartAreas[2].BackColor = colorDialog1.Color;
+                }
+
             }
         }
 
@@ -217,6 +255,28 @@ namespace WindowsFormsApp1
             chart1.Series[2].Enabled = true;
         }
 
+        private void btnImagenFondo_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                chart1.ChartAreas[0].BackImage = openFileDialog1.FileName;
+                if (chart1.ChartAreas.Count > 1)
+                {
+                    chart1.ChartAreas[1].BackImage = openFileDialog1.FileName;
+                    chart1.ChartAreas[2].BackImage = openFileDialog1.FileName;
+                }
+            }
+            
+        }
 
+        private void btnFuente_Click(object sender, EventArgs e)
+        {
+            if (fontDialog1.ShowDialog() == DialogResult.OK)
+            {
+                chart1.Series[0].Font = fontDialog1.Font;
+                chart1.Series[1].Font = fontDialog1.Font;
+                chart1.Series[2].Font = fontDialog1.Font;
+            }
+        }
     }
 }
