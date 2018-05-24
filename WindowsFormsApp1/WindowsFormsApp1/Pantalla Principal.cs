@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
+
 namespace WindowsFormsApp1
 {
     public partial class Form1 : MetroFramework.Forms.MetroForm
@@ -276,6 +277,55 @@ namespace WindowsFormsApp1
                 chart1.Series[0].Font = fontDialog1.Font;
                 chart1.Series[1].Font = fontDialog1.Font;
                 chart1.Series[2].Font = fontDialog1.Font;
+            }
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Fuente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            switch (comboBox2.SelectedIndex)
+            {
+                case 0:
+                    chart1.Palette = ChartColorPalette.None;
+                    break;
+                case 1:
+                    chart1.Palette = ChartColorPalette.Bright;    
+                    break;
+                case 2:
+                    chart1.Palette = ChartColorPalette.Grayscale;
+                    break;
+                case 3:
+                    chart1.Palette = ChartColorPalette.Excel;
+                    break;
+                case 4:
+                    chart1.Palette = ChartColorPalette.Light;
+                    break;
+                case 5:
+                    chart1.Palette = ChartColorPalette.Pastel;
+                    break;
+                case 6:
+                    chart1.Palette = ChartColorPalette.EarthTones;
+                    break;
+                case 7:
+                    chart1.Palette = ChartColorPalette.SemiTransparent;                 
+                    break;
+                case 8:
+                    chart1.Palette = ChartColorPalette.Berry;
+                    break;
             }
         }
     }

@@ -66,6 +66,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.label10 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lenguajesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lenguajesDataSet)).BeginInit();
@@ -83,6 +85,7 @@
             this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(23, 53);
             this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
             series1.ChartArea = "ChartArea1";
             series1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             series1.IsValueShownAsLabel = true;
@@ -195,15 +198,16 @@
             // Fuente
             // 
             this.Fuente.AutoSize = true;
-            this.Fuente.Location = new System.Drawing.Point(98, 222);
+            this.Fuente.Location = new System.Drawing.Point(103, 259);
             this.Fuente.Name = "Fuente";
             this.Fuente.Size = new System.Drawing.Size(40, 13);
             this.Fuente.TabIndex = 21;
             this.Fuente.Text = "Fuente";
+            this.Fuente.Click += new System.EventHandler(this.Fuente_Click);
             // 
             // btnFuente
             // 
-            this.btnFuente.Location = new System.Drawing.Point(171, 222);
+            this.btnFuente.Location = new System.Drawing.Point(176, 259);
             this.btnFuente.Name = "btnFuente";
             this.btnFuente.Size = new System.Drawing.Size(121, 23);
             this.btnFuente.TabIndex = 20;
@@ -214,15 +218,16 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(56, 193);
+            this.label9.Location = new System.Drawing.Point(61, 230);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(87, 13);
             this.label9.TabIndex = 19;
             this.label9.Text = "Imagen de fondo";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // btnImagenFondo
             // 
-            this.btnImagenFondo.Location = new System.Drawing.Point(170, 193);
+            this.btnImagenFondo.Location = new System.Drawing.Point(175, 230);
             this.btnImagenFondo.Name = "btnImagenFondo";
             this.btnImagenFondo.Size = new System.Drawing.Size(122, 23);
             this.btnImagenFondo.TabIndex = 18;
@@ -232,6 +237,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.comboBox2);
+            this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.btnSerie3);
             this.groupBox2.Controls.Add(this.btnSerie2);
             this.groupBox2.Controls.Add(this.label8);
@@ -240,7 +247,7 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Location = new System.Drawing.Point(57, 13);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(251, 117);
+            this.groupBox2.Size = new System.Drawing.Size(251, 155);
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Color Series";
@@ -304,7 +311,7 @@
             // 
             // btnBackColor
             // 
-            this.btnBackColor.Location = new System.Drawing.Point(170, 164);
+            this.btnBackColor.Location = new System.Drawing.Point(175, 201);
             this.btnBackColor.Name = "btnBackColor";
             this.btnBackColor.Size = new System.Drawing.Size(122, 23);
             this.btnBackColor.TabIndex = 11;
@@ -315,16 +322,17 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(67, 164);
+            this.label5.Location = new System.Drawing.Point(72, 201);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(76, 13);
             this.label5.TabIndex = 10;
             this.label5.Text = "Color de fondo";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(78, 137);
+            this.label4.Location = new System.Drawing.Point(83, 174);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 13);
             this.label4.TabIndex = 8;
@@ -339,7 +347,7 @@
             "Ninguno",
             "Simplista",
             "Realista"});
-            this.cbIluminacion.Location = new System.Drawing.Point(171, 137);
+            this.cbIluminacion.Location = new System.Drawing.Point(176, 174);
             this.cbIluminacion.Name = "cbIluminacion";
             this.cbIluminacion.Size = new System.Drawing.Size(121, 21);
             this.cbIluminacion.TabIndex = 6;
@@ -381,6 +389,34 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(49, 113);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(37, 13);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "Paleta";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "None",
+            "Bright",
+            "Grayscale",
+            "Excel",
+            "Light",
+            "Pastel",
+            "EarthTones",
+            "SemiTransparent",
+            "Berry"});
+            this.comboBox2.Location = new System.Drawing.Point(113, 113);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.TabIndex = 19;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged_1);
             // 
             // Form1
             // 
@@ -447,6 +483,8 @@
         private System.Windows.Forms.Label Fuente;
         private System.Windows.Forms.Button btnFuente;
         private System.Windows.Forms.FontDialog fontDialog1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }
 
